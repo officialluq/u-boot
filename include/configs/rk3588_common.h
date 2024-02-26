@@ -24,13 +24,30 @@
 	"fdt_addr_r=0x12000000\0"	\
 	"fdtoverlay_addr_r=0x12100000\0"	\
 	"ramdisk_addr_r=0x12180000\0"	\
-	"kernel_comp_size=0x8000000\0"
+	"ramdisk_addr_r_temp=-\0"	\
+	"kernel_comp_size=0x8000000\0"  \
+	"mmc_dev=1\0"
 
 #define CFG_EXTRA_ENV_SETTINGS \
 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
 	"partitions=" PARTS_DEFAULT		\
 	ENV_MEM_LAYOUT_SETTINGS			\
 	ROCKCHIP_DEVICE_SETTINGS \
+	"kernel_name=/boot/Image\0"		\
+	"mmcargs=setenv bootargs root=${rootdev} rw rootwait;\0"		\
+	BOOT_SETTINGS \
 	"boot_targets=" BOOT_TARGETS "\0"
+
+#define BOOT_SETTINGS \ 
+	"load_fdt= " \
+		"load mmc ${mmc_dev}:${mmcpart} ${fdt_addr_r} ${fdtfile} ${fdt_load_args};\0" \
+	"load_kernel= " \
+		"load mmc ${mmc_dev}:${mmcpart} ${kernel_addr_r} ${kernel_name} ${kernel_load_args};\0" \
+	"custom_boot= " \
+		"run load_fdt; " \
+		"run load_kernel; " \
+		"run mmcargs; " \
+		"booti ${kernel_addr_r} ${ramdisk_addr_r_temp} ${fdt_addr_r}; \0" 
+
 
 #endif /* __CONFIG_RK3588_COMMON_H */

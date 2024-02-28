@@ -195,6 +195,7 @@
 &sdhci {
 	bus-width = <8>;
 	u-boot,dm-spl;
+	mmc-hs400-1_8v;
 	non-removable;
 	status = "okay";
 };

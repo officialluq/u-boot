@@ -194,9 +194,12 @@
 
 &sdhci {
 	bus-width = <8>;
+	no-sdio;
+	no-sd;
 	u-boot,dm-spl;
-	mmc-hs400-1_8v;
 	non-removable;
+	mmc-hs400-1_8v;
+	mmc-hs400-enhanced-strobe;
 	status = "okay";
 };
 

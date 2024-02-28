@@ -27,8 +27,8 @@
 	"ramdisk_addr_r_temp=-\0"	\
 	"kernel_comp_size=0x8000000\0"  \
 	"mmc_dev=1\0" \
-	"mmcpart=3\0" 
-	"rootdev=\"/dev/mmbclk${mmc_dev}p${mmcpart}\"\0" \
+	"mmcpart=3\0" \
+	"rootdev=\"/dev/mmbclk${mmc_dev}p${mmcpart}\0" 
 
 #define CFG_EXTRA_ENV_SETTINGS \
 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \

@@ -45,7 +45,7 @@
 	"load_kernel= " \
 		"load mmc ${mmc_dev}:${mmcpart} ${kernel_addr_r} ${kernel_name} ${kernel_load_args};\0" \
 	"set_rootdev= " \
-		"setenv rootdev /dev/mmbclk${mmc_dev}p${mmcpart};\0" \
+		"setenv rootdev /dev/mmcblk${mmc_dev}p${mmcpart};\0" \
 	"custom_boot= " \
 		"mmc dev ${mmc_dev}; " \
 		"run set_rootdev; " \

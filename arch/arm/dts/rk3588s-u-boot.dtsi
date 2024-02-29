@@ -199,7 +199,6 @@
 	u-boot,dm-spl;
 	non-removable;
 	mmc-hs400-1_8v;
-	mmc-hs400-enhanced-strobe;
 	status = "okay";
 };
 
